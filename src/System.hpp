@@ -11,12 +11,14 @@ struct System
 {
     std::vector<BaseComponent> components;
     std::vector<Buffer> buffers;
-    Matrix inputs;
-    Array comp_output;
-    Array input_buffer;
-    int output_component;
 
-    bool is_valid(float);
+    Array component_outputs;
+
+    Matrix to_buffers;
+    Array to_input_buffers;
+    int to_output_component;
+
+    bool isValid(float);
     float normalize(float);
     void setInputs(Array);
     float computeOutput();
