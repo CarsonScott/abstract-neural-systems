@@ -3,7 +3,7 @@
 
 struct BaseComponent
 {
-    int funct_type;
+    int function_type;
 
     BaseComponent(int);
     float computeOutput(float, float);

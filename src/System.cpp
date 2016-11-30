@@ -2,7 +2,7 @@
 
 bool System::isValid(float x)
 {
-    return (!std::isnan(x) && !std::isinf(x));
+    return !std::isnan(x) && !std::isinf(x);
 }
 
 float System::normalize(float x)
@@ -14,12 +14,13 @@ float System::normalize(float x)
     return x;
 }
 
-void System::setInputs(Array in)
+void System::setInputs(Array inputs)
 {
-    for(int i = 0; i < in.size(); i++)
+    for(int i = 0; i < inputs.size(); i++)
     {
         int index = to_input_buffers[i];
-        buffers[index].setInput(in[i]);
+        float input = inputs[index];
+        buffers[index].setInput(input);
     }
 }
 
@@ -38,15 +39,16 @@ float System::computeOutput()
     Array c_out;
     for(int i = 0; i < components.size(); i++)
     {
-        Array buffer_output = buffers[i].getOutput();
+        Array buffer_output = buffers[i].getOutputs();
         float in1 = buffer_output[0];
         float in2 = buffer_output[1];
-
         float output = components[i].computeOutput(in1, in2);
+
         if(!isValid(output))
         {
             output = 0;
         }
+
         output = normalize(output);
         c_out.push_back(output);
     }

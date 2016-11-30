@@ -7,13 +7,13 @@
 
 struct Buffer
 {
-    Array inputs;
-    int max_size;
+    Array store;
+    int store_size;
     int required_outputs;
 
     Buffer(int, int);
     void setInput(float);
-    Array getOutput();
+    Array getOutputs();
 };
 
 #endif // BUFFER_HPP_INCLUDED

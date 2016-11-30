@@ -1,33 +1,35 @@
 #include "Buffer.hpp"
 
-Buffer::Buffer(int required, int input=0)
+Buffer::Buffer(int required, int storage=0)
 {
-    if(input == 0)
-        input = required;
-
-    max_size = input;
     required_outputs = required;
+    if(storage == 0)
+    {
+        storage = required_outputs;
+    }
 
-    for(int i = 0; i < max_size; i++){
-        inputs.push_back(0);
+    store_size = storage;
+    for(int i = 0; i < store_size; i++)
+    {
+        store.push_back(0);
     }
 }
 
 void Buffer::setInput(float input)
 {
-    if(inputs.size()+1 >= max_size)
+    if(store.size()+1 >= store_size)
     {
-        inputs.erase(inputs.begin());
+        store.erase(store.begin());
     }
-    inputs.push_back(input);
+    store.push_back(input);
 }
 
-Array Buffer::getOutput()
+Array Buffer::getOutputs()
 {
     Array outputs;
     for(int i = 0; i < required_outputs; i++)
     {
-        outputs.push_back(inputs[i]);
+        outputs.push_back(store[i]);
     }
     return outputs;
 }

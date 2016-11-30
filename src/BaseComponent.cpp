@@ -1,26 +1,26 @@
 #include "BaseComponent.hpp"
 
-BaseComponent::BaseComponent(int f_type=0)
+BaseComponent::BaseComponent(int f_type)
 {
-    funct_type = f_type;
+    function_type = f_type;
 }
 
 float BaseComponent::computeOutput(float in1, float in2)
 {
-    float output = 0;
-    if(funct_type == 0)
-        {
+    float output;
+    if(function_type == 0)
+    {
         output =  in1 + in2;
     }
-    else if(funct_type == 1)
+    else if(function_type == 1)
     {
         output =  in1 - in2;
     }
-    else if(funct_type == 2)
+    else if(function_type == 2)
     {
         output =  in1 * in2;
     }
-    else if(funct_type == 3)
+    else if(function_type == 3)
     {
         output =  in1 / in2;
     }
