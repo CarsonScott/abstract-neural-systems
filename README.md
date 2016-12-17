@@ -1,4 +1,4 @@
-# Abstract Neural Systems Theory
+# Abstract Neural Systems
 
 ## Systems and Trees
 &nbsp;&nbsp;&nbsp;&nbsp; A system transforms an input to an output through a collection of interconnected operators and storage units. A system is considered active when it produces an output. The output is sent to a tree which carries it to inputs of other system. 
